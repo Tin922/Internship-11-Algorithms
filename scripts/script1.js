@@ -22,13 +22,26 @@ console.log("Cijena:", largestDeviationArticle.price);
 console.log("Boja:", largestDeviationArticle.color);
 
 function enterArticle() {
-  let articleName = prompt("Upisite ime proizvoda");
-  let articlePrice = prompt("Upisite cijenu proizvoda");
-  let articleColor = prompt("Upisite boju proizvoda");
+  let articleName = prompt("Upisite ime proizvoda: ");
+  let articlePrice = askForNumber();
+  let articleColor = prompt("Upisite boju proizvoda: ");
 
   articles.push({
     name: articleName,
     price: articlePrice,
     color: articleColor,
   });
+}
+function askForNumber() {
+  let userInput;
+  do {
+    userInput = prompt("Upisite cijenu proizvoda:  ");
+  } while (
+    userInput === null ||
+    userInput.trim() === "" ||
+    isNaN(userInput) ||
+    parseFloat(userInput) <= 0
+  );
+
+  return parseFloat(userInput);
 }

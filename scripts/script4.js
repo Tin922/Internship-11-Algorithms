@@ -33,11 +33,25 @@ console.log(`Ukupno kalorija za boju ${currentColor}: ${totalCalories}`);
 function enterFruit() {
   let name = prompt("Upisite ime voca: ");
   let color = prompt("Upisite boju voca: ");
-  let calories = parseInt(prompt("Upisite broj kalorija voca: "));
+  let calories = askForNumber();
 
   fruits.push({
     name,
     color,
     calories,
   });
+}
+
+function askForNumber() {
+  let userInput;
+  do {
+    userInput = prompt("Upisite kalorije voca: ");
+  } while (
+    userInput === null ||
+    userInput.trim() === "" ||
+    isNaN(userInput) ||
+    parseFloat(userInput) <= 0
+  );
+
+  return parseFloat(userInput);
 }

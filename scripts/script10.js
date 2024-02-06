@@ -32,11 +32,25 @@ fruits.forEach((fruit) => {
 function enterFruit() {
   let name = prompt("Upisite ime voca: ");
   let color = prompt("Upisite boju voca: ");
-  let price = parseInt(prompt("Upisite cijenu voca: "));
+  let price = askForNumber();
 
   fruits.push({
     name,
     color,
     price,
   });
+}
+
+function askForNumber() {
+  let userInput;
+  do {
+    userInput = prompt("Upisite cijenu voca: ");
+  } while (
+    userInput === null ||
+    userInput.trim() === "" ||
+    isNaN(userInput) ||
+    parseFloat(userInput) <= 0
+  );
+
+  return parseFloat(userInput);
 }

@@ -42,7 +42,7 @@ function enterPerson() {
   let firstName = prompt("Upisite ime osobe: ");
   let lastName = prompt("Upisite prezime osobe: ");
   let occupation = prompt("Upisite zanimanje osobe: ");
-  let salary = parseFloat(prompt("Upisite placu: "));
+  let salary = askForNumber();
 
   people.push({
     firstName,
@@ -50,4 +50,17 @@ function enterPerson() {
     occupation,
     salary,
   });
+}
+function askForNumber() {
+  let userInput;
+  do {
+    userInput = prompt("Upisite placu: ");
+  } while (
+    userInput === null ||
+    userInput.trim() === "" ||
+    isNaN(userInput) ||
+    parseFloat(userInput) <= 0
+  );
+
+  return parseFloat(userInput);
 }

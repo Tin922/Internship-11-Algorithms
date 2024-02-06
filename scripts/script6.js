@@ -46,7 +46,7 @@ console.log(
 
 function enterFruit() {
   let name = prompt("Upisite ime voca: ");
-  let price = parseFloat(prompt("Upisite cijenu voca: "));
+  let price = askForNumber();
   let availability = prompt("Je li proizvod dostupan? (da/ne): ");
 
   fruits.push({
@@ -54,4 +54,18 @@ function enterFruit() {
     price,
     availability,
   });
+}
+
+function askForNumber() {
+  let userInput;
+  do {
+    userInput = prompt("Upisite cijenu voca: ");
+  } while (
+    userInput === null ||
+    userInput.trim() === "" ||
+    isNaN(userInput) ||
+    parseFloat(userInput) <= 0
+  );
+
+  return parseFloat(userInput);
 }
